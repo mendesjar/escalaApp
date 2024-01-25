@@ -9,18 +9,17 @@ import {
   ScrollView,
 } from "native-base";
 import { useState } from "react";
-import {
-  escalasMaioresNaturais,
-  escalasMenoresNaturais,
-} from "../../resources";
+import { escalas } from "../../resources";
 
 export default function Dashboard() {
-  const [escala, setEscala] = useState("maior");
+  const [escalaSelected, setEscalaSelected] = useState(
+    "escalasMaioresNaturais"
+  );
   const [notaSelected, setNotaSelected] = useState("C");
   const notas = ["C", "D", "E", "F", "G", "A", "B"];
 
   const handleEscolhaEscala = (escala) => {
-    setEscala(escala);
+    setEscalaSelected(escala);
   };
 
   function handleSelectedNota(nota) {
@@ -38,8 +37,10 @@ export default function Dashboard() {
             <Flex className="w-1/2 p-2">
               <Button
                 className="rounded-[20rem]"
-                onPress={() => handleEscolhaEscala("maior")}
-                bgColor={escala === "maior" ? "#f2bc3e" : null}
+                onPress={() => handleEscolhaEscala("escalasMaioresNaturais")}
+                bgColor={
+                  escalaSelected === "escalasMaioresNaturais" ? "#f2bc3e" : null
+                }
                 minHeight={140}
               >
                 MAIOR
@@ -48,8 +49,10 @@ export default function Dashboard() {
             <Flex className="w-1/2 p-2">
               <Button
                 className="rounded-[20rem]"
-                onPress={() => handleEscolhaEscala("menor")}
-                bgColor={escala === "menor" ? "#f2bc3e" : null}
+                onPress={() => handleEscolhaEscala("escalasMenoresNaturais")}
+                bgColor={
+                  escalaSelected === "escalasMenoresNaturais" ? "#f2bc3e" : null
+                }
                 minHeight={140}
               >
                 MENOR
@@ -72,21 +75,15 @@ export default function Dashboard() {
             ))}
           </Stack>
           <HStack className="w-full items-center justify-center m-2 px-8 py-5 rounded-[20rem] bg-[#f8d57e] border-2 border-[#f2bc3e]">
-            {escala === "maior" && notaSelected
-              ? escalasMaioresNaturais[notaSelected].map((item) => {
-                  return (
-                    <Text bold fontSize="xl" className="mx-1 text-orange-950">
-                      {item}
-                    </Text>
-                  );
-                })
-              : escalasMenoresNaturais[notaSelected].map((item) => {
-                  return (
-                    <Text bold fontSize="xl" className="mx-1 text-orange-950">
-                      {item}
-                    </Text>
-                  );
-                })}
+            {escalaSelected &&
+              notaSelected &&
+              escalas[escalaSelected][notaSelected].map((item) => {
+                return (
+                  <Text bold fontSize="xl" className="mx-1 text-orange-950">
+                    {item}
+                  </Text>
+                );
+              })}
           </HStack>
         </VStack>
       </View>

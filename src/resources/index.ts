@@ -1,1 +1,1 @@
-export { escalasMaioresNaturais, escalasMenoresNaturais } from "./locales";
+export { escalas } from "./locales";
