@@ -41,23 +41,6 @@ export default function Dashboard() {
             MENOR
           </Button>
         </Stack>
-        <Box className="w-full flex-row bg-slate-400">
-          <Button
-            onPress={() => handleEscolhaEscala("maior")}
-            bgColor={escala === "maior" ? "#f2bc3e" : null}
-            minHeight={140}
-          >
-            MAIOR
-          </Button>
-          <Button
-            className="w-full m-2 rounded-3xl"
-            onPress={() => handleEscolhaEscala("menor")}
-            bgColor={escala === "menor" ? "#f2bc3e" : null}
-            minHeight={140}
-          >
-            MENOR
-          </Button>
-        </Box>
       </VStack>
     </View>
   );
