@@ -18,7 +18,7 @@ export default function Dashboard() {
   return (
     <View className="h-screen flex bg-white items-center p-10 justify-center">
       <VStack className="w-full items-center">
-        <HStack className="w-full rounded-[20rem] bg-gray-50 justify-center p-5 m-2">
+        <HStack className="w-full rounded-[20rem] bg-gray-100 justify-center p-5 m-2">
           <Text>Selecione a Escala</Text>
         </HStack>
         <Stack className="flex-row">
@@ -43,7 +43,7 @@ export default function Dashboard() {
             </Button>
           </Flex>
         </Stack>
-        <HStack className="w-full rounded-[20rem] bg-gray-50 justify-center p-5 m-2">
+        <HStack className="w-full rounded-[20rem] bg-gray-100 justify-center p-5 m-2">
           <Text>Selecione a Nota</Text>
         </HStack>
         <Stack className="w-full flex-row flex-wrap justify-center">
