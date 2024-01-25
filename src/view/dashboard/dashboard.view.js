@@ -1,5 +1,13 @@
-import { Flex, Text, View, Button } from "native-base";
-import { StyleSheet } from "react-native";
+import {
+  Flex,
+  Text,
+  View,
+  Button,
+  VStack,
+  HStack,
+  Box,
+  Stack,
+} from "native-base";
 import { useState } from "react";
 
 export default function Dashboard() {
@@ -11,77 +19,46 @@ export default function Dashboard() {
 
   const notas = ["C", "D", "E", "F", "G", "A", "B"];
 
-  const escalasMaioresNaturais = {
-    C: ["C", "D", "E", "F", "G", "A", "B", "C"],
-    D: ["D", "E", "F♯", "G", "A", "B", "C♯", "D"],
-    E: ["E", "F♯", "G♯", "A", "B", "C♯", "D♯", "E"],
-    F: ["F", "G", "A", "B♭", "C", "D", "E", "F"],
-    G: ["G", "A", "B", "C", "D", "E", "F♯", "G"],
-    A: ["A", "B", "C♯", "D", "E", "F♯", "G♯", "A"],
-    B: ["B", "C♯", "D♯", "E", "F♯", "G♯", "A♯", "B"],
-  };
-
-  const escalasMenoresNaturais = {
-    C: ["C", "D", "E♭", "F", "G", "A♭", "B♭", "C"],
-    D: ["D", "E", "F", "G", "A", "B♭", "C", "D"],
-    E: ["E", "F♯", "G", "A", "B", "C", "D", "E"],
-    F: ["F", "G", "A♭", "B♭", "C", "D♭", "E♭", "F"],
-    G: ["G", "A", "B♭", "C", "D", "E♭", "F", "G"],
-    A: ["A", "B", "C", "D", "E", "F", "G", "A"],
-    B: ["B", "C♯", "D", "E", "F♯", "G", "A", "B"],
-  };
-
   return (
-    <View style={styles.container}>
-      <Text paddingBottom={5}>Escala maior ou menor?</Text>
-      <Flex direction="row" w="full" marginBottom={5} style={styles.flex}>
-        <Button
-          onPress={() => handleEscolhaEscala("maior")}
-          bgColor={escala === "maior" ? "#f2bc3e" : null}
-          width={"50%"}
-        >
-          MAIOR
-        </Button>
-        <Button
-          onPress={() => handleEscolhaEscala("menor")}
-          bgColor={escala === "menor" ? "#f2bc3e" : null}
-          width={"50%"}
-        >
-          MENOR
-        </Button>
-      </Flex>
-      <Flex
-        direction="row"
-        w="full"
-        wrap="wrap"
-        style={styles.flex}
-        justifyContent={"center"}
-      >
-        {notas.map((nota, index) => (
+    <View className="h-screen flex bg-white items-center p-10 justify-center">
+      <VStack className="w-full items-center gap-3">
+        <HStack className="w-full rounded-3xl bg-gray-100 justify-center p-5">
+          <Text>Selecione a escala:</Text>
+        </HStack>
+        <Stack className="mb-10 mt-6 flex-row gap-3">
           <Button
-            key={index}
-            paddingRight={10}
-            paddingLeft={10}
-            maxWidth={"full"}
+            onPress={() => handleEscolhaEscala("maior")}
+            bgColor={escala === "maior" ? "#f2bc3e" : null}
+            minHeight={140}
           >
-            {nota}
+            MAIOR
           </Button>
-        ))}
-      </Flex>
-      {/* {escala === "maior" && <Button>C</Button>} */}
+          <Button
+            onPress={() => handleEscolhaEscala("maior")}
+            bgColor={escala === "maior" ? "#f2bc3e" : null}
+            minHeight={140}
+          >
+            MENOR
+          </Button>
+        </Stack>
+        <Box className="w-full flex-row bg-slate-400">
+          <Button
+            onPress={() => handleEscolhaEscala("maior")}
+            bgColor={escala === "maior" ? "#f2bc3e" : null}
+            minHeight={140}
+          >
+            MAIOR
+          </Button>
+          <Button
+            className="w-full m-2 rounded-3xl"
+            onPress={() => handleEscolhaEscala("menor")}
+            bgColor={escala === "menor" ? "#f2bc3e" : null}
+            minHeight={140}
+          >
+            MENOR
+          </Button>
+        </Box>
+      </VStack>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    gap: 10,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    padding: 30,
-    justifyContent: "center",
-  },
-});
